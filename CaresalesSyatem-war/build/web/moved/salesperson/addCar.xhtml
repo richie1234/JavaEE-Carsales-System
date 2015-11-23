@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Add Car </title>
+    </h:head>
+    <h:body>
+          <h1> SalesPerson Add Car </h1>
+        <f:view>
+                    
+           
+      
+
+                <h:link value="Home" outcome="index"></h:link>
+                <br></br>                         
+                <h:link value="Add new car" outcome="addCar"></h:link>
+                <br></br>
+                 <h:link value="Car List With Thubnail" outcome="salesPersonCarListWithThubnail"></h:link>
+                <br></br>
+                 <h:link value="Car List Without car" outcome="index"></h:link> 
+                 <br></br>
+                 <h:link value="Car detail View" outcome="carDetailView"></h:link>
+                <br></br>          
+                 <h:link value="Search a car" outcome="salesPersonCarSearch"></h:link>
+                <br></br>
+                <h:link value="Edit Customer Details" outcome="salesPersonCustomerEdit"></h:link>
+                <br></br>
+                <h:link value="Search a Customer" outcome="salesPersonCustomerSearch"></h:link>
+           
+       
+                 <br></br>           
+
+
+            <h:form  enctype="multipart/form-data">
+               
+                <h1><h:outputText value="Add car"/></h1>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="VehicleIdentification Number:" for="vehicleIdentificationNumber" />
+                    <h:inputText id="vehicleIdentificationNumber" value="#{carEditManagedBean.newcar.vehicleIdentificationNumber}" title="VehicleIdentificationNumber" required="true" requiredMessage="The VehicleIdentificationNumber field is required."/>
+                    <h:outputLabel value="Model Name:" for="modelName" />
+                    <h:inputText id="modelName" value="#{carEditManagedBean.newcar.modelName}" title="ModelName" required="true" requiredMessage="The ModelName field is required."/>
+                    <h:outputLabel value="Manufacturer:" for="manufacturer" />
+                    <h:inputText id="manufacturer" value="#{carEditManagedBean.newcar.manufacturer}" title="Manufacturer" />
+                    <h:outputLabel value="Type:" for="type" />
+                    <h:inputText id="type" value="#{carEditManagedBean.newcar.type}" title="Type" />
+                    <h:outputLabel value="Thumbnail name (JPG):" for="thumbnail" />
+                    <h:inputText id="thumbnail" value="#{carEditManagedBean.newcar.thumbnail}" title="Thumbnail" />
+                    <h:outputLabel value="Description:" for="description" />
+                    <h:inputText id="description" value="#{carEditManagedBean.newcar.description}" title="Description" />
+                    <h:outputLabel value="Preview URL:" for="previewURL" />
+                    <h:inputText id="previewURL" value="#{carEditManagedBean.newcar.previewURL}" title="PreviewURL" />
+                    <h:outputLabel value="Thumbnail:" />
+                    <h:inputFile value="#{carEditManagedBean.file1}"/>
+                    <h:outputLabel></h:outputLabel>
+                    <h:commandButton value="Save" action="#{carEditManagedBean.addCar()}"></h:commandButton>
+                </h:panelGrid>              
+                
+                
+            </h:form>
+        </f:view>
+        
+                        
+
+
+
+       
+    </h:body>
+</html>
+

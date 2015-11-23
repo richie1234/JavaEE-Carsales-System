@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./saletespersonTemplate.xhtml">
+
+            <ui:define name="content">
+                <h1>Full Car List </h1>
+  
+        
+        <f:view>
+         
+
+            <h:form enctype="multipart/form-data">
+                <h3><h:outputText value="Car List"/></h3>
+                <h:dataTable class="table" value="#{searchManagedBean.findAll()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model No"/>
+                        </f:facet>
+                        <h:outputText value="#{item.modelNo}"/>                      
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="VehicleIdentification Number"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.vehicleIdentificationNumber}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.vehicleIdentificationNumber}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model Name"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.modelName}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.modelName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.manufacturer}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.manufacturer}"/>
+
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Type"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.type}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.type}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Thumbnail Name"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.thumbnail}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.thumbnail}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.description}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Preview URL"/>
+                        </f:facet>
+                        <h:outputLink rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.previewURL}" target="_blank">
+                        <f:param name="" value="" />
+                                        <h:outputText value="#{item.previewURL}" />
+                                </h:outputLink> 
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.previewURL}"/>
+                    </h:column>
+                     
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText  value="Thumbnail Image"/>
+                        </f:facet>
+                        <h:graphicImage rendered="#{searchManagedBean.selectedCar ne item}"  url="../resources/images/#{item.thumbnail}-#{item.vehicleIdentificationNumber}.jpg" width="60" height="60" />
+                        <!--<h:inputFile rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.file1}"/>-->
+                    </h:column>
+                 
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Delete"/>
+                        </f:facet>
+                          <h:commandButton  class="btn btn-danger"   value="Delete" action="#{searchManagedBean.removeCar(item.modelNo)}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Edit"/>
+                        </f:facet>
+                         <h:commandButton  class="btn btn-warning"   rendered="#{searchManagedBean.selectedCar eq item}" value="Update" action="#{searchManagedBean.updateCar}"/>
+                          <h:commandButton  class="btn btn-warning"  rendered="#{searchManagedBean.selectedCar ne item}" value="Edit" action="#{searchManagedBean.selectForModification(item)}"/>
+                    </h:column>
+                    
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+       
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

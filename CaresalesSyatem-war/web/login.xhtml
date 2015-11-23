@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+
+        <h:outputStylesheet name="./css/bootstrap.css"/>
+        <h:outputStylesheet name="./css/bootstrap-theme.css"/>
+        <h:outputStylesheet name="./css/navbar-static-top.css"/>
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/myLayout.css"/>    
+    
+    <title>login</title>
+</h:head>
+<h:body>
+    
+    <h:form class="form-group col-md-3">
+ 
+        <div class="form-group ">
+            <h:outputText class="text-primary" value="Username:" />
+        <h:inputText  class="form-control" id="username" value="#{login.user}"></h:inputText>
+        <h:message for="username:"></h:message>
+        </div>
+     
+         <div class="form-group">
+        <h:outputText class="text-primary" value="Password" />
+        <h:inputSecret class="form-control" id="password" value="#{login.pwd}"></h:inputSecret>
+        <h:message for="password"></h:message>
+    
+         </div>
+        <div class="checkbox">
+            <label>
+              <input type="checkbox"> Remember me</input>
+            </label>
+          </div>
+     
+        <h:commandButton class="btn btn-default" action="#{login.validateUsernamePassword}"
+            value="Login"></h:commandButton>
+         
+    </h:form> 
+    <br></br>
+
+    <f:view>
+
+
+              <h:form>
+                  <h3 class="col-lg-12"><h:outputText value="Create a SalesPerson to test this App: type = 'SALESPERSON'"/></h3>
+                  <h:panelGrid class="table col-lg-12" columns="2">
+                      <h:outputLabel value="Last Name:" for="lastName" />
+                      <h:inputText id="lastName" value="#{addSalespersonManagedBean.newSalesPerson.lastName}" title="LastName" />
+                      <h:outputLabel value="First Name:" for="firstName" />
+                      <h:inputText id="firstName" value="#{addSalespersonManagedBean.newSalesPerson.firstName}" title="FirstName" />
+                      <h:outputLabel value="Email:" for="email" />
+                      <h:inputText id="email" value="#{addSalespersonManagedBean.newSalesPerson.email}" title="Email" />
+                      <h:outputLabel value="Password:" for="password" />
+                      <h:inputText id="password" value="#{addSalespersonManagedBean.newSalesPerson.password}" title="Password" />
+                      <h:outputLabel value="Type:" for="type" />
+                      <h:inputText id="type" value="#{addSalespersonManagedBean.newSalesPerson.type}" title="Type" />
+                      
+                       <h:outputLabel value="Street Number:" for="streetNumber" />
+                       <h:inputText id="streetNumber" value="#{addSalespersonManagedBean.newSalesPerson.address.streetNumber}" title="streetNumber" />
+                      
+                       <h:outputLabel value="Street Name:" for="streetAddress" />
+                       <h:inputText id="streetAddress" value="#{addSalespersonManagedBean.newSalesPerson.address.streetAddress}" title="streetAddress" />
+                      
+                       <h:outputLabel value="Suburb:" for="suburb" />
+                       <h:inputText id="suburb" value="#{addSalespersonManagedBean.newSalesPerson.address.suburb}" title="suburb" />
+                      
+                       <h:outputLabel value="State:" for="state" />
+                       <h:inputText id="state" value="#{addSalespersonManagedBean.newSalesPerson.address.state}" title="state" />
+                       
+                       <h:outputLabel value="Postcode:" for="postcode" />
+                       <h:inputText id="postcode" value="#{addSalespersonManagedBean.newSalesPerson.address.postcode}" title="postcode" />                      
+      
+                       
+                       
+                      <h:outputLabel value="Phone Number:" for="phoneNumber" />
+                      <h:inputText id="phoneNumber" value="#{addSalespersonManagedBean.newSalesPerson.phoneNumber}" title="PhoneNumber" />
+                      <h:outputLabel></h:outputLabel>
+                    <h:commandButton class="btn btn-success" value="Save" action="#{addSalespersonManagedBean.addUser()}"></h:commandButton>
+                      
+                  </h:panelGrid>
+              </h:form>
+          </f:view>
+   
+    
+</h:body>
+</html>

@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h1>Sales Person </h1>
+        
+        <f:view>
+
+                <h:link value="Home" outcome="index"></h:link>
+                <br></br>
+                         
+                <h:link value="Add new car" outcome="addCar"></h:link>
+                <br></br>
+                  <h:link value="Car List With Thubnail" outcome="salesPersonCarListWithThubnail"></h:link>
+                <br></br>
+                 <h:link value="Car List Without car" outcome="index"></h:link> 
+                 <br></br>
+                 <h:link value="Car detail View" outcome="carDetailView"></h:link>
+                <br></br>          
+                 <h:link value="Search a car" outcome="salesPersonCarSearch"></h:link>
+                <br></br>
+                <h:link value="Edit car Details" outcome="salesPersonCustomerEdit"></h:link>
+                <br></br>
+                <h:link value="Search a Customer" outcome="salesPersonCustomerSearch"></h:link>
+           
+       
+                 <br></br>             
+            
+        </f:view>
+        
+        
+        
+        <f:view>
+         
+
+            <h:form enctype="multipart/form-data">
+                <h1><h:outputText value="Car List"/></h1>
+                <h:dataTable value="#{searchManagedBean.findAll()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model No"/>
+                        </f:facet>
+                        <h:outputText value="#{item.modelNo}"/>                      
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="VehicleIdentification Number"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.vehicleIdentificationNumber}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.vehicleIdentificationNumber}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model Name"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.modelName}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.modelName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.manufacturer}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.manufacturer}"/>
+
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Type"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.type}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.type}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Thumbnail Name"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.thumbnail}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.thumbnail}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.description}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Preview URL"/>
+                        </f:facet>
+                        <h:outputText rendered="#{searchManagedBean.selectedCar ne item}" value="#{item.previewURL}"/>
+                        <h:inputText rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.selectedCar.previewURL}"/>
+                    </h:column>
+                     
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText  value="Thumbnail Image"/>
+                        </f:facet>
+                        <h:graphicImage rendered="#{searchManagedBean.selectedCar ne item}"  url="../resources/images/#{item.thumbnail}-#{item.vehicleIdentificationNumber}.jpg" width="60" height="60" />
+                        <!--<h:inputFile rendered="#{searchManagedBean.selectedCar eq item}" value="#{searchManagedBean.file1}"/>-->
+                    </h:column>
+                 
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Delete"/>
+                        </f:facet>
+                          <h:commandButton  value="Delete" action="#{searchManagedBean.removeCar(item.modelNo)}"/>
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Edit"/>
+                        </f:facet>
+                         <h:commandButton  rendered="#{searchManagedBean.selectedCar eq item}" value="Update" action="#{searchManagedBean.updateCar}"/>
+                          <h:commandButton rendered="#{searchManagedBean.selectedCar ne item}" value="Edit" action="#{searchManagedBean.selectForModification(item)}"/>
+                    </h:column>
+                    
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+        
+
+<!--        <f:view>
+
+
+            <h:form>
+                <h1><h:outputText value="List"/></h1>
+                <h:dataTable value="#{carController.findAll()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ModelNo"/>
+                        </f:facet>
+                        <h:outputText value="#{item.modelNo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="VehicleIdentificationNumber"/>
+                        </f:facet>
+                        <h:outputText value="#{item.vehicleIdentificationNumber}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ModelName"/>
+                        </f:facet>
+                        <h:outputText value="#{item.modelName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer"/>
+                        </f:facet>
+                        <h:outputText value="#{item.manufacturer}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Type"/>
+                        </f:facet>
+                        <h:outputText value="#{item.type}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Thumbnail"/>
+                        </f:facet>
+                        <h:outputText value="#{item.thumbnail}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="PreviewURL"/>
+                        </f:facet>
+                        <h:outputText value="#{item.previewURL}"/>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>-->
+
+
+        
+        
+        
+<!--        <h:form prependId="false">
+            User Name <h:inputText id="userName" value="#{loginUserBean.name}"/><br/>
+            User Password <h:inputSecret id="userPassword" value="#{loginUserBean.password}"/><br/>
+            <h:outputLabel id="userNamelabel" value="#{loginUserBean.name}"/><br/>
+            <h:commandButton id="submitButton" value="submit" action="#{loginUserBean.setSaveUser()}"></h:commandButton>
+
+                    
+        </h:form>-->
+        <!--        <br />
+                <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />-->
+    </h:body>
+</html>
+

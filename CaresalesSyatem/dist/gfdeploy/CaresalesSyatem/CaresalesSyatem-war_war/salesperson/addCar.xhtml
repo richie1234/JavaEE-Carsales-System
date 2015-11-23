@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./saletespersonTemplate.xhtml">
+
+            <ui:define name="content">
+                 <h1> Add a Car </h1>
+        <f:view>
+  
+            <h:form  enctype="multipart/form-data">
+               
+                <h4><h:outputText value="Please enter details: type : SEDAN,TRUCK,FOUR_WHEEL_DRIVE"/></h4>
+                <h:panelGrid class="table" columns="2">
+                    <h:outputLabel value="Vehicle Identification Number:" for="vehicleIdentificationNumber" />
+                    <h:inputText id="vehicleIdentificationNumber" value="#{carEditManagedBean.newcar.vehicleIdentificationNumber}" title="VehicleIdentificationNumber" required="true" requiredMessage="The VehicleIdentificationNumber field is required."/>
+                    <h:outputLabel value="Model Name:" for="modelName" />
+                    <h:inputText id="modelName" value="#{carEditManagedBean.newcar.modelName}" title="ModelName" required="true" requiredMessage="The ModelName field is required."/>
+                    <h:outputLabel value="Manufacturer:" for="manufacturer" />
+                    <h:inputText id="manufacturer" value="#{carEditManagedBean.newcar.manufacturer}" title="Manufacturer" />
+                    <h:outputLabel value="Type:" for="type" />
+                    <h:inputText id="type" value="#{carEditManagedBean.newcar.type}" title="Type" />
+                    <h:outputLabel value="Thumbnail save as (JPG):" for="thumbnail" />
+                    <h:inputText id="thumbnail" value="#{carEditManagedBean.newcar.thumbnail}" title="Thumbnail" />
+                    <h:outputLabel value="Description:" for="description" />
+                    <h:inputText id="description" value="#{carEditManagedBean.newcar.description}" title="Description" />
+                    <h:outputLabel value="Preview URL:" for="previewURL" />
+                    <h:inputText id="previewURL" value="#{carEditManagedBean.newcar.previewURL}" title="PreviewURL" />
+                    <h:outputLabel value="Thumbnail:" />
+                    <h:inputFile class="btn btn-default" value="#{carEditManagedBean.file1}"/>
+                    <h:outputLabel></h:outputLabel>
+                    <h:commandButton class="btn btn-success" value="Save" action="#{carEditManagedBean.addCar()}"></h:commandButton>
+                </h:panelGrid>              
+                
+                
+            </h:form>
+        </f:view>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

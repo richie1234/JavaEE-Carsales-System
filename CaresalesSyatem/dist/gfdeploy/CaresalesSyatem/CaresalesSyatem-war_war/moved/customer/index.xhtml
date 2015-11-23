@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Customer Home</title>
+    </h:head>
+    <h:body>
+          <h1>Home </h1>
+          
+          
+           <f:view>            
+                 <h:link value="Car Search" outcome="customerCarSearch"></h:link> 
+                 <br></br> 
+                 <h:form>
+                 <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
+                 </h:form>
+        </f:view>
+          
+          
+          
+          
+        <f:view>
+
+            <h:form>
+                <h1><h:outputText value="Car List"/></h1>
+                <h:dataTable value="#{customerCarSearchManagedBean.findAllCars()}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model No"/>
+                        </f:facet>
+                        <h:outputText value="#{item.modelNo}"/>                      
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model Name"/>
+                        </f:facet>
+                        <h:outputText  value="#{item.modelName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer"/>
+                        </f:facet>
+                        <h:outputText  value="#{item.manufacturer}"/>
+
+                    </h:column>                  
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=""/>
+                        </f:facet>
+                      
+                       <h:outputLink value="carDetailView.xhtml">
+                           <f:param name="id" value="#{item.modelNo}" />
+                                        <h:outputText value="Detail View" />
+                                </h:outputLink>
+                        
+                        
+                       
+                    </h:column>
+                    
+
+                    
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

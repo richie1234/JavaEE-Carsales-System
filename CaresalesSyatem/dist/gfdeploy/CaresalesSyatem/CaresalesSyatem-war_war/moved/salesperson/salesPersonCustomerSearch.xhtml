@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h1>Salesperson customer search </h1>
+             <f:view>
+                        
+               
+               
+              <h:link value="Customer View" outcome="/salesperson/index"></h:link>                
+               <br></br>
+                <h:link value="Salesperson Home" outcome="index"></h:link>
+                <br></br>
+                         
+                <h:link value="Add new car" outcome="addCar"></h:link>
+                <br></br>
+                  <h:link value="Car List With Thubnail" outcome="salesPersonCarListWithThubnail"></h:link>
+                <br></br>
+                 <h:link value="Car List Without car" outcome="index"></h:link> 
+                 <br></br>              
+                 <h:link value="Sales person car search" outcome="salesPersonCarSearch"></h:link>
+                <br></br>
+                <h:link value="Edit Customer Details" outcome="salesPersonCustomerEdit"></h:link>
+                <br></br>
+                <h:link value="Search a Customer" outcome="salesPersonCustomerSearch"></h:link>                
+                <br></br>
+                <h:link value="Add User" outcome="addUser"></h:link>
+           
+       
+                 <br></br>           
+                </f:view>
+      
+        <f:view>
+
+        <h:form>
+            <h1><h:outputText value="Search a Customer"/></h1>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="User Id:" for="userId" />
+                <h:inputText id="userId" value="#{salesPersoneCusSearchMBean.searchedcustomer.userId}" title="Id"/>
+                <h:outputLabel value="Last Name:" for="lastName" />
+                <h:inputText id="lastName" value="#{salesPersoneCusSearchMBean.searchedcustomer.lastName}" title="Last Name" />
+                <h:outputLabel value="First Name:" for="firstName" />
+                <h:inputText id="firstName" value="#{salesPersoneCusSearchMBean.searchedcustomer.firstName}" title="First Name" />
+                <h:outputLabel value="Email:" for="email" />
+                <h:inputText id="email" value="#{salesPersoneCusSearchMBean.searchedcustomer.email}" title="Email" />               
+                <h:outputLabel value="Type:" for="type" />
+                <h:inputText id="type" value="#{salesPersoneCusSearchMBean.searchedcustomer.type}" title="Type" />
+                
+                
+                <h:outputLabel value=""  ></h:outputLabel>
+                <h:commandButton  value="Search" action="#{salesPersoneCusSearchMBean.searchButtonPressed}"/>
+            
+            </h:panelGrid>
+        </h:form>
+
+            </f:view>
+        
+        
+
+
+
+        
+        
+        
+        
+        
+        <f:view>                
+
+            <h:form>
+
+                
+                
+                <h4><h:outputLabel value="click to list all customers  : "  ></h:outputLabel>
+                <h:commandButton  value="View all customers" action="#{salesPersoneCusSearchMBean.viewAllButtonPressed}"/> </h4>               
+             
+                <br></br>
+                <h:dataTable value="#{salesPersoneCusSearchMBean.customerList}" var="item">
+                <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Id"/>
+                          </f:facet>
+                          <h:outputText value="#{item.userId}"/>
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Last Name"/>
+                          </f:facet>
+                          <h:outputText  value="#{item.lastName}"/>
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="First Name"/>
+                          </f:facet>
+                          <h:outputText  value="#{item.firstName}"/>
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Email"/>
+                          </f:facet>
+                          <h:outputText  value="#{item.email}"/>
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Password"/>
+                          </f:facet>
+                          <h:outputText  value="#{item.password}"/>
+
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Type"/>                                                        
+                          </f:facet>
+                          <h:outputText  value="#{item.type}"/>
+                      </h:column>
+                      
+                     
+                      
+                     <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Street Number"/>
+                          </f:facet>
+                         <h:outputText  value="#{item.address.streetNumber}"/>
+                      </h:column>
+                    
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Street"/>
+                          </f:facet>
+                         <h:outputText  value="#{item.address.streetAddress}"/>
+                      </h:column>
+                      
+                        <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Suburb"/>
+                          </f:facet>
+                            <h:outputText  value="#{item.address.suburb}"/>
+                      </h:column>
+                      
+                        <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="State"/>
+                          </f:facet>
+                            <h:outputText  value="#{item.address.state}"/>
+                      </h:column>  
+                      
+                       <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Post Code"/>
+                          </f:facet>
+                           <h:outputText  value="#{item.address.postcode}"/>
+                      </h:column>                      
+                      
+                                            
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Phone Number"/>
+                          </f:facet>
+                          <h:outputText  value="#{item.phoneNumber}"/>
+                      </h:column>
+  
+                    
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+        
+    </h:body>
+</html>
+

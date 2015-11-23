@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./saletespersonTemplate.xhtml">
+
+            <ui:define name="content">
+                 <h1>Car Search </h1>
+                  
+        <f:view>
+
+
+            <h:form>
+
+                <h3><h:outputText value="please enter car details"/></h3>
+                <h:panelGrid columns="2"  class="table">
+                    <h:outputLabel value="Model No:" for="modelNo" />
+                    <h:inputText id="modelNo" value="#{salespersonCarSearchManagedBean.searchcar.modelNo}" title="ModelNo" />
+                    <h:outputLabel value="Model Name:" for="modelName" />
+                    <h:inputText id="modelName" value="#{salespersonCarSearchManagedBean.searchcar.modelName}" title="ModelName" />
+                    <h:outputLabel value="Manufacturer:" for="manufacturer" />
+                    <h:inputText id="manufacturer" value="#{salespersonCarSearchManagedBean.searchcar.manufacturer}" title="Manufacturer" />
+                    <h:outputLabel value="Type:" for="type" />
+                    <h:inputText id="type" value="#{salespersonCarSearchManagedBean.searchcar.type}" title="Type" />
+         
+                    <h:outputLabel value=""  ></h:outputLabel>
+                    <h:commandButton class="btn btn-success"  value="Search" action="#{salespersonCarSearchManagedBean.searchButtonPressed}"/>
+
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+        
+        
+        
+        
+        
+        <f:view>                
+
+            <h:form>
+
+                
+                
+                <h4><h:outputLabel value="click to list all cars  :   "  ></h:outputLabel>
+                <h:commandButton class="btn btn-info"  value="View all cars" action="#{salespersonCarSearchManagedBean.viewAllButtonPressed}"/> </h4>               
+             
+                <br></br>
+                <h:dataTable class="table" value="#{salespersonCarSearchManagedBean.carList}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model No"/>
+                        </f:facet>
+                        <h:outputText value="#{item.modelNo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Vehicle Identification Number"/>
+                        </f:facet>
+                        <h:outputText value="#{item.vehicleIdentificationNumber}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model Name"/>
+                        </f:facet>
+                        <h:outputText value="#{item.modelName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer"/>
+                        </f:facet>
+                        <h:outputText value="#{item.manufacturer}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Type"/>
+                        </f:facet>
+                        <h:outputText value="#{item.type}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Thumbnail"/>
+                        </f:facet>
+                        <h:outputText value="#{item.thumbnail}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </h:column>
+                     <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Preview URL"/>
+                        </f:facet>
+                        <h:outputLink rendered="#{item.modelNo>0}"   value="#{item.previewURL}" target="_blank">
+                           <f:param name="" value="" />
+                                        <h:outputText value="#{item.previewURL}" />
+                                </h:outputLink>                       
+                                                
+                    </h:column>   
+                    
+                     <h:column>
+                        <f:facet name="header">
+                            <h:outputText  value="Thumbnail Image"/>
+                        </f:facet>
+                         <h:graphicImage rendered="#{item.modelNo>0}"   url="../resources/images/#{item.thumbnail}-#{item.vehicleIdentificationNumber}.jpg" width="60" height="60" />
+                    </h:column>
+                    
+                    
+                   
+                      <h:column>
+                        <f:facet name="header">
+                            <h:outputText rendered="#{item.modelNo>0}"  value="Delete"/>
+                        </f:facet>
+                          <h:commandButton  class="btn btn-danger" rendered="#{item.modelNo>0}"   value="Delete" action="#{salespersonCarSearchManagedBean.removeCar(item.modelNo)}"/>
+                    </h:column>
+      
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=""/>
+                        </f:facet>
+                      
+                       <h:outputLink class="btn btn-info" rendered="#{item.modelNo>0}"  value="carDetailView.xhtml">
+                           <f:param name="id" value="#{item.modelNo}" />
+                                        <h:outputText value="Detail View" />
+                                </h:outputLink>
+                        
+                        
+                       
+                    </h:column>
+                    
+                    
+                    
+                     
+                    
+                    
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

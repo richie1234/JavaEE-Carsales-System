@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Customer Car Search</title>
+    </h:head>
+    <h:body>
+        <h1>Customer Car Search</h1>
+        
+         <f:view>
+                       <h:link value="Home" outcome="index"></h:link> 
+                 <br></br>
+                
+        </f:view>
+        
+      
+        <f:view>
+
+
+            <h:form>
+
+                <h2><h:outputText value="Serach a car"/></h2>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Model No:" for="modelNo" />
+                    <h:inputText id="modelNo" value="#{customerCarSearchManagedBean.searchcar.modelNo}" title="ModelNo" />
+                    <h:outputLabel value="Model Name:" for="modelName" />
+                    <h:inputText id="modelName" value="#{customerCarSearchManagedBean.searchcar.modelName}" title="ModelName" />
+                    <h:outputLabel value="Manufacturer:" for="manufacturer" />
+                    <h:inputText id="manufacturer" value="#{customerCarSearchManagedBean.searchcar.manufacturer}" title="Manufacturer" />
+                    <h:outputLabel value="Type:" for="type" />
+                    <h:inputText id="type" value="#{customerCarSearchManagedBean.searchcar.type}" title="Type" />
+         
+                    <h:outputLabel value=""  ></h:outputLabel>
+                    <h:commandButton  value="Search" action="#{customerCarSearchManagedBean.searchButtonPressed}"/>
+
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+  
+        <f:view>               
+
+            <h:form>                
+                
+                <h4><h:outputLabel value="click to list all cars  : "  ></h:outputLabel>
+                <h:commandButton  value="View all cars" action="#{customerCarSearchManagedBean.viewAllButtonPressed}"/> </h4>               
+             
+                <br></br>
+                <h:dataTable value="#{customerCarSearchManagedBean.carList}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model No"/>
+                        </f:facet>
+                        <h:outputText value="#{item.modelNo}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="VehicleIdentification Number"/>
+                        </f:facet>
+                        <h:outputText value="#{item.vehicleIdentificationNumber}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Model Name"/>
+                        </f:facet>
+                        <h:outputText value="#{item.modelName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Manufacturer"/>
+                        </f:facet>
+                        <h:outputText value="#{item.manufacturer}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Type"/>
+                        </f:facet>
+                        <h:outputText value="#{item.type}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Thumbnail Image"/>
+                        </f:facet>
+                        <h:graphicImage rendered="#{item.modelNo>0}"  url="../resources/images/#{item.thumbnail}-#{item.vehicleIdentificationNumber}.jpg" width="60" height="60" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Description"/>
+                        </f:facet>
+                        <h:outputText value="#{item.description}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Preview URL"/>
+                        </f:facet>
+                        <h:outputLink rendered="#{item.modelNo>0}"   value="http://#{item.previewURL}" target="_blank">
+                           <f:param name="" value="" />
+                                        <h:outputText value="URL" />
+                                </h:outputLink>                       
+                                                
+                    </h:column>   
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Detail View"/>
+                        </f:facet>
+                      
+                       <h:outputLink rendered="#{item.modelNo>0}"  value="carDetailView.xhtml">
+                           <f:param name="id" value="#{item.modelNo}" />
+                                        <h:outputText value="Detail View" />
+                                </h:outputLink>
+                        
+                        
+                       
+                    </h:column>
+                    
+                    
+                                        
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+        
+    </h:body>
+</html>
+

@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./saletespersonTemplate.xhtml">
+
+            <ui:define name="content">
+                 <h1>List of all customers </h1>
+                   
+          <f:view>
+
+
+              <h:form>
+                  <h3><h:outputText value="Customer List"/></h3>
+                  <h:dataTable class="table" value="#{customerEditManagedBean.findAll()}" var="item">
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Id"/>
+                          </f:facet>
+                          <h:outputText value="#{item.userId}"/>
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Last Name"/>
+                          </f:facet>
+                          <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.lastName}"/>
+                          <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.lastName}"/>
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="First Name"/>
+                          </f:facet>
+                          <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.firstName}"/>
+                          <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.firstName}"/>
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Email"/>
+                          </f:facet>
+                          <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.email}"/>
+                           <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.email}"/>
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Password"/>
+                          </f:facet>
+                          <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.password}"/>
+                          <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.password}"/>
+
+                      </h:column>
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Type"/>                                                        
+                          </f:facet>
+                          <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.type}"/>
+                          <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.type}"/> 
+                      </h:column>
+                      
+                     
+                      
+                     <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Street Number"/>
+                          </f:facet>
+                         <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.address.streetNumber}"/>
+                         <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.address.streetNumber}"/>
+                      </h:column>
+                    
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Street"/>
+                          </f:facet>
+                         <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.address.streetAddress}"/>
+                         <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.address.streetAddress}"/>
+                      </h:column>
+                      
+                        <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Suburb"/>
+                          </f:facet>
+                            <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.address.suburb}"/>
+                         <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.address.suburb}"/>
+                      </h:column>
+                      
+                        <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="State"/>
+                          </f:facet>
+                            <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.address.state}"/>
+                         <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.address.state}"/>
+                      </h:column>  
+                      
+                       <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Post Code"/>
+                          </f:facet>
+                           <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.address.postcode}"/>
+                         <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.address.postcode}"/>
+                      </h:column>                      
+                      
+                                            
+                      <h:column>
+                          <f:facet name="header">
+                              <h:outputText value="Phone Number"/>
+                          </f:facet>
+                          <h:outputText rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="#{item.phoneNumber}"/>
+                          <h:inputText rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="#{customerEditManagedBean.selectedCustomer.phoneNumber}"/>
+                      </h:column>
+                      
+
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Edit"/>
+                        </f:facet>
+                        <h:commandButton class="btn btn-warning"  rendered="#{customerEditManagedBean.selectedCustomer eq item}" value="Update" action="#{customerEditManagedBean.updateCustomer}"/>
+                        <h:commandButton class="btn btn-warning" rendered="#{customerEditManagedBean.selectedCustomer ne item}" value="Edit" action="#{customerEditManagedBean.selectForModification(item)}"/>
+                    </h:column>
+<!--                      
+                   <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Add"/>
+                        </f:facet>                        
+                       <h:button value="Add" outcome="addUser"/>
+                    </h:column> -->
+                      
+                      
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Delete"/>
+                        </f:facet>                        
+                        <h:commandButton class="btn btn-danger" value="Delete" action="#{customerEditManagedBean.removeCustomer(item.userId)}"/>
+                    </h:column>
+                      
+                      
+                      
+                  </h:dataTable>
+              </h:form>
+          </f:view>
+
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

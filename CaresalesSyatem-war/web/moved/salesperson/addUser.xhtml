@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+          <h1>Sales Person </h1>
+        <f:view>
+                    
+           
+                 
+  
+                <h:link value="Home" outcome="index"></h:link>
+                <br></br>
+                         
+                <h:link value="Add new car" outcome="addCar"></h:link>
+                <br></br>
+                  <h:link value="Car List With Thubnail" outcome="salesPersonCarListWithThubnail"></h:link>
+                <br></br>
+                 <h:link value="Car List Without car" outcome="index"></h:link> 
+                 <br></br>
+                 <h:link value="Car detail View" outcome="carDetailView"></h:link>
+                <br></br>          
+                 <h:link value="Search a car" outcome="salesPersonCarSearch"></h:link>
+                <br></br>
+                <h:link value="Edit Customer Details" outcome="salesPersonCustomerEdit"></h:link>
+                <br></br>
+                <h:link value="Search a Customer" outcome="salesPersonCustomerSearch"></h:link>
+           
+       
+                 <br></br>           
+        </f:view>
+          
+          <f:view>
+
+
+              <h:form>
+                  <h1><h:outputText value="Add user"/></h1>
+                  <h:panelGrid columns="2">
+                      <h:outputLabel value="Last Name:" for="lastName" />
+                      <h:inputText id="lastName" value="#{addUserManagedBean.newCustomer.lastName}" title="LastName" />
+                      <h:outputLabel value="First Name:" for="firstName" />
+                      <h:inputText id="firstName" value="#{addUserManagedBean.newCustomer.firstName}" title="FirstName" />
+                      <h:outputLabel value="Email:" for="email" />
+                      <h:inputText id="email" value="#{addUserManagedBean.newCustomer.email}" title="Email" />
+                      <h:outputLabel value="Password:" for="password" />
+                      <h:inputText id="password" value="#{addUserManagedBean.newCustomer.password}" title="Password" />
+                      <h:outputLabel value="Type:" for="type" />
+                      <h:inputText id="type" value="#{addUserManagedBean.newCustomer.type}" title="Type" />
+                      
+                       <h:outputLabel value="Street Number:" for="streetNumber" />
+                       <h:inputText id="streetNumber" value="#{addUserManagedBean.newCustomer.address.streetNumber}" title="streetNumber" />
+                      
+                       <h:outputLabel value="Street Name:" for="streetAddress" />
+                       <h:inputText id="streetAddress" value="#{addUserManagedBean.newCustomer.address.streetAddress}" title="streetAddress" />
+                      
+                       <h:outputLabel value="Suburb:" for="suburb" />
+                       <h:inputText id="suburb" value="#{addUserManagedBean.newCustomer.address.suburb}" title="suburb" />
+                      
+                       <h:outputLabel value="State:" for="state" />
+                       <h:inputText id="state" value="#{addUserManagedBean.newCustomer.address.state}" title="state" />
+                       
+                       <h:outputLabel value="Postcode:" for="postcode" />
+                       <h:inputText id="postcode" value="#{addUserManagedBean.newCustomer.address.postcode}" title="postcode" />                      
+      
+                       
+                       
+                      <h:outputLabel value="Phone Number:" for="phoneNumber" />
+                      <h:inputText id="phoneNumber" value="#{addUserManagedBean.newCustomer.phoneNumber}" title="PhoneNumber" />
+                      <h:outputLabel></h:outputLabel>
+                    <h:commandButton value="Save" action="#{addUserManagedBean.addUser()}"></h:commandButton>
+                      
+                  </h:panelGrid>
+              </h:form>
+          </f:view>
+
+          
+        
+                        
+
+
+
+       
+    </h:body>
+</html>
+

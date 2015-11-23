@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./saletespersonTemplate.xhtml">
+
+            <ui:define name="content">
+                  <h1>Create a customer </h1>
+          
+          <f:view>
+
+
+              <h:form>
+                  <h4><h:outputText value="Please enter details : Type = 'CUSTOMER' "/></h4>
+                  <h:panelGrid class="table"  columns="2">
+                      <h:outputLabel value="Last Name:" for="lastName" />
+                      <h:inputText id="lastName" value="#{addUserManagedBean.newCustomer.lastName}" title="LastName" />
+                      <h:outputLabel value="First Name:" for="firstName" />
+                      <h:inputText id="firstName" value="#{addUserManagedBean.newCustomer.firstName}" title="FirstName" />
+                      <h:outputLabel value="Email:" for="email" />
+                      <h:inputText id="email" value="#{addUserManagedBean.newCustomer.email}" title="Email" />
+                      <h:outputLabel value="Password:" for="password" />
+                      <h:inputText id="password" value="#{addUserManagedBean.newCustomer.password}" title="Password" />
+                      <h:outputLabel value="Type:" for="type" />
+                      <h:inputText id="type" value="#{addUserManagedBean.newCustomer.type}" title="Type" />
+                      
+                       <h:outputLabel value="Street Number:" for="streetNumber" />
+                       <h:inputText id="streetNumber" value="#{addUserManagedBean.newCustomer.address.streetNumber}" title="streetNumber" />
+                      
+                       <h:outputLabel value="Street Name:" for="streetAddress" />
+                       <h:inputText id="streetAddress" value="#{addUserManagedBean.newCustomer.address.streetAddress}" title="streetAddress" />
+                      
+                       <h:outputLabel value="Suburb:" for="suburb" />
+                       <h:inputText id="suburb" value="#{addUserManagedBean.newCustomer.address.suburb}" title="suburb" />
+                      
+                       <h:outputLabel value="State:" for="state" />
+                       <h:inputText id="state" value="#{addUserManagedBean.newCustomer.address.state}" title="state" />
+                       
+                       <h:outputLabel value="Postcode:" for="postcode" />
+                       <h:inputText id="postcode" value="#{addUserManagedBean.newCustomer.address.postcode}" title="postcode" />                      
+      
+                       
+                       
+                      <h:outputLabel value="Phone Number:" for="phoneNumber" />
+                      <h:inputText id="phoneNumber" value="#{addUserManagedBean.newCustomer.phoneNumber}" title="PhoneNumber" />
+                      <h:outputLabel></h:outputLabel>
+                    <h:commandButton class="btn btn-success" value="Save" action="#{addUserManagedBean.addUser()}"></h:commandButton>
+                      
+                  </h:panelGrid>
+              </h:form>
+          </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
